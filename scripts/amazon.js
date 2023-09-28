@@ -1,4 +1,3 @@
-
 /* The code you provided is a JavaScript forEach loop that iterates over each object in the `products`
   array. For each object, it creates an HTML string using template literals and assigns it to the
   `html` variable. The HTML string represents a product container with various elements such as an
@@ -16,6 +15,7 @@ products.forEach(product => {
 
             <div class="product-name limit-text-to-2-lines">
               ${product.name}
+            {console.log(${product.name})}
             </div>
 
             <div class="product-rating-container">
@@ -52,12 +52,38 @@ products.forEach(product => {
               Added
             </div>
 
-            <button class="add-to-cart-button button-primary">
+            <button class="add-to-cart-button button-primary js-add-to-cart"
+            data-product-id="${product.id}">
               Add to Cart
             </button>
           </div>`
 })
 
-console.log(productHTML)
-
 document.querySelector('.js-products-grid').innerHTML = productHTML
+document.querySelectorAll('.js-add-to-cart').forEach(button => {
+  button.addEventListener('click', () => {
+    console.log('add  to clicked')
+    /* `console.log(button.dataset)` is logging the `dataset` property of the `button` element to the
+    console. The `dataset` property is an object that contains all the custom data attributes of the
+    element. In this case, it is logging the custom data attribute `data-product-name` of the button
+    element.*/
+    const productId = button.dataset.productId
+    let matchingItem
+    cart.forEach(product => {
+      if (productId === product.productId) {
+        //  product.quantity++
+        matchingItem = product
+        console.log(product.quantity)
+      }
+    })
+    if (matchingItem) {
+      matchingItem.quantity += 1
+    } else {
+      cart.push({
+        productId: productId,
+        quantity: 1
+      })
+    }
+    console.log(cart)
+  })
+})
