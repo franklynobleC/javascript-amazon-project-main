@@ -1,37 +1,9 @@
-const products = [
-  {
-    image: 'images/products/athletic-cotton-socks-6-pairs.jpg',
-    name: 'Black and Gray Athletic Cotton Socks - 6 Pairs',
-    rating: {
-      stars: 4.5,
-      count: 87
-    },
-    priceCents: 1090
-  },
-  {
-    image: 'images/products/intermediate-composite-basketball.jpg',
-    name: 'Intermediate Size Basketballs',
-    rating: {
-      stars: 4,
-      count: 127
-    },
-    priceCents: 2095
-  },
-  {
-    image: 'images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg',
-    name: 'Adults Plain Cotton T-Shirt - 2 Pack',
-    rating: {
-      stars: 4.5,
-      count: 56
-    },
-    priceCents: 799
-  }
-]
+
 /* The code you provided is a JavaScript forEach loop that iterates over each object in the `products`
-array. For each object, it creates an HTML string using template literals and assigns it to the
-`html` variable. The HTML string represents a product container with various elements such as an
-image, name, rating, price, quantity selector, and buttons. However, the `html` variable is not
-being used or displayed anywhere in the code you provided. */
+  array. For each object, it creates an HTML string using template literals and assigns it to the
+  `html` variable. The HTML string represents a product container with various elements such as an
+  image, name, rating, price, quantity selector, and buttons. However, the `html` variable is not
+  being used or displayed anywhere in the code you provided. */
 let productHTML = ``
 
 products.forEach(product => {
@@ -55,7 +27,7 @@ products.forEach(product => {
             </div>
 
             <div class="product-price">
-         $${product.priceCents / 100}
+         $${(product.priceCents / 100).toFixed(2)}
             </div>
 
             <div class="product-quantity-container">
