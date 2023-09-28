@@ -84,6 +84,16 @@ document.querySelectorAll('.js-add-to-cart').forEach(button => {
         quantity: 1
       })
     }
-    console.log(cart)
+
+    /* The code `let catTotal = 0` initializes a variable `catTotal` to 0. */
+    let catTotal = 0
+
+    cart.forEach(item => {
+      catTotal = catTotal + item.quantity
+    })
+
+    //put  the cart quantity on  the Page
+    document.querySelector('.js-cart-total').innerHTML = catTotal
+
   })
 })
