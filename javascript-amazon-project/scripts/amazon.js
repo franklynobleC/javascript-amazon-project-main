@@ -1,3 +1,4 @@
+import { cart } from '../data/cart.js'
 /* The code you provided is a JavaScript forEach loop that iterates over each object in the `products`
   array. For each object, it creates an HTML string using template literals and assigns it to the
   `html` variable. The HTML string represents a product container with various elements such as an
@@ -94,6 +95,5 @@ document.querySelectorAll('.js-add-to-cart').forEach(button => {
 
     //put  the cart quantity on  the Page
     document.querySelector('.js-cart-total').innerHTML = catTotal
-
   })
 })
