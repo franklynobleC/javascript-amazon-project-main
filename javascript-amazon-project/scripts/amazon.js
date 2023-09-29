@@ -1,4 +1,4 @@
-import { cart } from '../data/cart.js'
+import { cart, addToCart } from '../data/cart.js'
 import { products } from '../data/products.js'
 /* The code you provided is a JavaScript forEach loop that iterates over each object in the `products`
   array. For each object, it creates an HTML string using template literals and assigns it to the
@@ -69,32 +69,25 @@ document.querySelectorAll('.js-add-to-cart').forEach(button => {
     console. The `dataset` property is an object that contains all the custom data attributes of the
     element. In this case, it is logging the custom data attribute `data-product-name` of the button
     element.*/
-    const productId = button.dataset.productId
-    let matchingItem
-    cart.forEach(product => {
-      if (productId === product.productId) {
-        //  product.quantity++
-        matchingItem = product
-        console.log(product.quantity)
-      }
-    })
-    if (matchingItem) {
-      matchingItem.quantity += 1
-    } else {
-      cart.push({
-        productId: productId,
-        quantity: 1
+
+    /**
+     * The function calculates the total quantity of items in the cart and updates the corresponding
+     * element on the page.
+     */
+    function updateCartQuantity () {
+      let catTotal = 0
+
+      cart.forEach(cartProduct => {
+        catTotal = catTotal + cartProduct.quantity
       })
+
+      //put  the cart quantity on  the Page
+      document.querySelector('.js-cart-total').innerHTML = catTotal
     }
 
+    const productId = button.dataset.productId
+    addToCart(productId)
     /* The code `let catTotal = 0` initializes a variable `catTotal` to 0. */
-    let catTotal = 0
-
-    cart.forEach(item => {
-      catTotal = catTotal + item.quantity
-    })
-
-    //put  the cart quantity on  the Page
-    document.querySelector('.js-cart-total').innerHTML = catTotal
+    updateCartQuantity()
   })
 })
