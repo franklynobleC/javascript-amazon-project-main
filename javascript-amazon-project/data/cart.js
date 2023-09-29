@@ -34,3 +34,13 @@ export function addToCart (productId) {
     })
   }
 }
+
+function removeFromCart (productId) {
+  let newCart = []
+  cart.forEach((cartProduct, index) => {
+    if (productId !== cartProduct.productId) {
+      newCart.push(cartProduct)
+    }
+  })
+  cart = newCart
+}
