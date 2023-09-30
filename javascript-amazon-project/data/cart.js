@@ -25,6 +25,8 @@ export function addToCart (productId) {
       console.log(cartProduct.quantity)
     }
   })
+ /* The code block `if (matchingItem) { ... } else { ... }` is checking if a product with the given
+ `productId` already exists in the cart. */
   if (matchingItem) {
     matchingItem.quantity += 1
   } else {
@@ -34,8 +36,13 @@ export function addToCart (productId) {
     })
   }
 }
+/**
+ * The function removes a product from the cart based on its productId.
+ * @param productId - The `productId` parameter is the unique identifier of the product that needs to
+ * be removed from the cart.
+ */
 
-function removeFromCart (productId) {
+export function removeFromCart (productId) {
   let newCart = []
   cart.forEach((cartProduct, index) => {
     if (productId !== cartProduct.productId) {
