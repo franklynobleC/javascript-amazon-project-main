@@ -16,7 +16,7 @@ cart.forEach(cartItem => {
   console.log(matchingProduct)
   cartSummary += `
 
-<div class='cart-item-container js-cart-item-${matchingProduct.id}'>
+<div class='cart-item-container js-cart-item-container-${matchingProduct.id}'>
   <div class='delivery-date'>Delivery date: Wednesday, June 15</div>
 
   <div class='cart-item-details-grid'>
@@ -88,12 +88,12 @@ cart.forEach(cartItem => {
 document.querySelector('.js-order-summary').innerHTML = cartSummary
 document.querySelectorAll('.js-delete-link').forEach(link => {
   link.addEventListener('click', () => {
-    let productId = link.dataset.productId
+    const productId = link.dataset.productId
 
     removeFromCart(productId)
 
-    let containerProductId = document.querySelector(
-      `.js-cart-item-${productId}`
+    const containerProductId = document.querySelector(
+      `.js-cart-item-container-${productId}`
     )
     // this  would  remove the  element from  this  page(from  the Dom Object)
     containerProductId.remove()
